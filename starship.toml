@@ -1,0 +1,155 @@
+[🙋](bg:#73a6f5)\
+$username\
+[ɪᴘ](bg:#ff0000)\
+$custom\
+$uptime\
+$git_branch\
+$git_status\
+[☁️ ](fg:#1B5E20 bg:#16537e)\
+$aws\
+$time\
+$battery\
+$directory\
+$status\
+[➡️  ️](fg:#2c3e50)\
+"""
+command_timeout = 5000
+scan_timeout = 70
+
+[username]
+show_always = true
+style_user = "bold bg:#008744"
+style_root = "bold bg:#182C61"
+format = "[ ➡  $user ]($style)"
+disabled = false
+[custom.network]
+command = "hostname -I | awk '{print $1}'"
+format = "[ $output ]($style)"
+style = "bold blue bg:#ffffff"
+when = "hostname -I"
+
+[directory]
+style = "bold bg:#0292ff"
+format = "[📂 $path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+[battery]
+full_symbol = "🔋⚡"
+charging_symbol = "⚡"
+discharging_symbol = "🔌"
+format = "[$symbol $percentage ]($style) [$status]($style)"  # Status adds info like 'Charging' or 'Discharging'
+
+[[battery.display]]  # For low battery (0-20%)
+threshold = 20
+style = "bold black bg:#fb0000"
+
+[[battery.display]]  # For medium battery (20-60%)
+threshold = 60
+style = "bold black bg:#fb0000"
+
+[[battery.display]]  # For high battery (60-100%)
+threshold = 100
+style = "bold black bg:#fb0000"
+
+[c]
+symbol = "🇨"
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[python]
+symbol = "🌐"
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+
+[elixir]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[elm]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[git_branch]
+symbol = "☯"
+style = "bg:#23dfdc fg:#000000"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "bg:#16a085 fg:#000000"
+format = "[$all_status$ahead_behind ]($style)"
+
+[golang]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[gradle]
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[aws]
+symbol = "☁️"
+style = "bold fg:#ffa500 bg:#16537e"
+format = "[ AWS:eu-west-1 ]($style)"
+
+[haskell]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[java]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[julia]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[nodejs]
+symbol = ""
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[nim]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[rust]
+symbol = ""
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[scala]
+symbol = " "
+style = "bg:#1B5E20"
+format = "[ $symbol ($version) ]($style)"
+
+[docker_context]
+symbol = " "
+style = "bg:#2980b9"
+format = "[ $symbol $context ]($style) $path"
+
+[time]
+disabled = false
+time_format = "%r" # Hour:Minute:Seconds AM/PM Format
+style = "bold bg:#ecde23 fg:#000000"
+format = "[⏰ $time ]($style)"
+
+[cmd_duration]
+style = "bold bg:#1A237E"
+min_time = 500
+format = "[ took:$duration]($style)"
+
+[status]
+style = "bold black bg:#ffffff"
+symbol = "⛔"
+success_symbol = "✅"
+format = "[$symbol $common_meaning$signal_name$maybe_int ]($style)"
+map_symbol = true
+disabled = false
